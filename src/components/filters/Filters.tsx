@@ -1,6 +1,12 @@
 'use client'
 
 import React, { useState } from 'react';
+import FilterAnimalType from './FilterOptions/FilterAnimalType';
+import FilterBreed from './FilterOptions/FilterBreed';
+import FilterGender from './FilterOptions/FilterGender';
+import FilterSize from './FilterOptions/FilterSize';
+import FilterAge from './FilterOptions/FilterAge';
+import FilterAdoptionStatus from './FilterOptions/FilterAdoptionStatus';
 
 /*
     Filtrar por:
@@ -19,23 +25,20 @@ import React, { useState } from 'react';
 
 function Filters() {
 
-    const [animalType, setAnimalType] = useState('');
-    const [breed, setBreed] = useState('');
-    const [size, setSize] = useState('');
-    const [gender, setGender] = useState('');
-    const [age, setAge] = useState('');
-    const [adoptionStatus, setAdoptionStatus] = useState('');
 
     return(
         <div>
-            <h2>Filtrar:</h2>
-            <h4>Por tipo de animal:</h4>
-            <button type="button">Cualquiera</button>
-            <button type="button">Perro</button>
-            <button type="button">Gato</button>
+        <h2>Filtrar:</h2>
+        <h4>Por tipo de animal:</h4>
 
-            
-        </div>
+        < FilterAnimalType />
+        < FilterBreed />
+        < FilterSize />
+        < FilterGender />
+        < FilterAge />
+        < FilterAdoptionStatus />
+        
+    </div>
     )
 }
 
