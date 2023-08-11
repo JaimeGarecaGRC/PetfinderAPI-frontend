@@ -1,16 +1,25 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../../../context/GlobalState';
 
 function FilterAge() {
     
-    const [age, setAge] = useState('');
+    const {state, dispatch} = useContext(Context);
+
+    const changeAge = (age) => {
+        dispatch({type: "CHANGE_AGE", payload: age});
+    }
+
+    const age = state.age;
 
     return(
-        <select name="adoptionStatus" value={age} onChange={(e) => setAge(e.target.value)}>
-            <option value="">Escoge una edad</option>
-            <option value="Adoptado">Baby</option>
-            <option value="Por Adoptar">Young</option>
+        <select className="size-select" name="adoptionStatus" value={age} onChange={(e) => changeAge(e.target.value)}>
+            <option value="Any">Escoge una edad</option>
+            <option value="baby">Bebe</option>
+            <option value="young">Joven</option>
+            <option value="adult">Adulto</option>
+            <option value="senior">Mayorcito</option>
         </select>
     )
 }

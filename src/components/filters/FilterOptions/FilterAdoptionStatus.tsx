@@ -1,16 +1,24 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { Context } from '../../../context/GlobalState';
 
 function FilterAdoptionStatus() {
     
-    const [adoptionStatus, setAdoptionStatus] = useState('');
+    const {state, dispatch} = useContext(Context);
+
+    const changeAdoptionStatus = (adoptionStatus) => {
+        dispatch({type: "CHANGE_ADOPTION_STATUS", payload: adoptionStatus});
+    }
+
+    const adoptionStatus = state.adoption_status;
 
     return(
-        <select name="adoptionStatus" value={adoptionStatus} onChange={(e) => setAdoptionStatus(e.target.value)}>
-            <option value="any">Escoge un Estado de Adopcion</option>
-            <option value="Adoptado">Adoptado</option>
-            <option value="Por Adoptar">Por Adoptar</option>
+        <select className="size-select" name="adoptionStatus" value={adoptionStatus} onChange={(e) => changeAdoptionStatus(e.target.value)}>
+            <option value="Any">Cualquier estado de adopcion</option>
+            <option value="adoptable">Por Adoptadar</option>
+            <option value="adopted">Adoptado</option>
+            <option value="found">Encontrado</option>
         </select>
     )
 }

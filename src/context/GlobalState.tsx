@@ -6,8 +6,8 @@ import { reducer } from "./AppReducer";
 export const Context = createContext({});
 
 const initialState = {
-    acc_token: "Any",
-    animal_type: "Any",
+    acc_token: "No Token",
+    animal_type: "Dog",
     breed: "Any",
     size: "Any",
     gender: "Any",
@@ -64,8 +64,6 @@ export const GlobalProvider = ({ children }) => {
             payload: accToken,
         })
     }
-
-
 
     return (
         <Context.Provider value={{ state, dispatch }}>

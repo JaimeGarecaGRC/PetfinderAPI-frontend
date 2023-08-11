@@ -1,16 +1,25 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../../../context/GlobalState';
 
 function FilterSize() {
 
-    const [size, setSize] = useState('');
+    const {state, dispatch} = useContext(Context);
+
+    const changeSize = (size) => {
+        dispatch({type: "CHANGE_SIZE", payload: size});
+    }
+
+    const size = state.size;
 
     return (
-        <select name="size" value={size} onChange={(e) => setSize(e.target.value)}>
-            <option value="">Escoge un Tamaño</option>
-            <option value="L">L</option>
-            <option value="M">M</option>
+        <select className="size-select" name="size" value={size} onChange={(e) => changeSize(e.target.value)}>
+            <option value="Any">Cualquier Tamaño</option>
+            <option value="small">Pequeñito</option>
+            <option value="medium">Mediano</option>
+            <option value="large">Grande</option>
+            <option value="xlarge">Grandote</option>
         </select>
     )
 }

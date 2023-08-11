@@ -1,16 +1,25 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../../../context/GlobalState';
 
 function FilterGender() {
     
-    const [gender, setGender] = useState('');
+    const {state, dispatch} = useContext(Context);
+
+    const changeGender = (gender) => {
+        dispatch({type: "CHANGE_GENDER", payload: gender});
+    }
+
+    const gender = state.gender;
+
 
     return (
-        <select name="gender" value={gender} onChange={(e) => setGender(e.target.value)}>
-            <option value="">Escoge un Genero</option>
-            <option value="Macho">Macho</option>
-            <option value="Hembra">Hembra</option>
+        <select className="size-select" name="gender" value={gender} onChange={(e) => changeGender(e.target.value)}>
+            <option value="Any">Cualquier Genero</option>
+            <option value="male">Macho</option>
+            <option value="female">Hembra</option>
+            <option value="unknow">Desconocido</option>
         </select>
 
     )
