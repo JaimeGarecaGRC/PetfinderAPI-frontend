@@ -2,18 +2,17 @@ import React from 'react';
 import Header from '../components/header/Header';
 import { GlobalProvider } from '../context/GlobalState';
 import './global.css';
-import { Comme } from 'next/font/google';
+import { Inter } from 'next/font/google';
 
-const comme = Comme({
-    subsets: ['latin'],
-    display: 'swap',
+const inter = Inter({
+    subsets: ['latin']
 }) 
 
 
 
 export default function RootLayout({ children, }: { children: React.ReactNode }) {    
     return (
-        <html lang="en" className={comme.className}>
+        <html lang="en" className={inter.className}>
             <GlobalProvider>
                 <body>
                     <Header />
