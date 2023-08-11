@@ -4,10 +4,15 @@ import React, { useContext, useEffect, useState } from 'react';
 import PetListItem from './PetListItem';
 import { Context } from '../../context/GlobalState';
 import { stat } from 'fs';
+import Pagination from './pagination';
 
 function PetList() {
 
-    const {state} = useContext(Context);
+    const {state, dispatch} = useContext(Context);
+
+    const changeTotalPages = (totalPages) => {
+        dispatch({type: "CHANGE_TOTAL", payload: totalPages});
+    }
 
     const [animals, setAnimals] = useState([]);
 
@@ -18,6 +23,7 @@ function PetList() {
     const gender = state.gender;
     const age = state.age;
     const status = state.adoption_status;
+    const page = state.page;
 
     const getAnimalList = async () => {
         if (AccToken) {
@@ -29,7 +35,7 @@ function PetList() {
             const statusIURL = status !== "Any" ? `&status=${status}` : "";
 
             try {
-                const response = await fetch(`https://api.petfinder.com/v2/animals?type=${animalType}${breedIURL}${sizeIURL}${genderIURL}${ageIURL}${statusIURL}&limit=30`, {
+                const response = await fetch(`https://api.petfinder.com/v2/animals?type=${animalType}${breedIURL}${sizeIURL}${genderIURL}${ageIURL}${statusIURL}&page=${page}&limit=30`, {
                     method: 'GET',
                     headers: {
                     'Authorization':`Bearer ${AccToken}`
@@ -39,6 +45,8 @@ function PetList() {
             if (response.ok) {
                 const data = await response.json();
                 setAnimals(data.animals);
+                changeTotalPages(data.pagination.total_pages);
+
             } else {
                 console.error('API Error:', response.status, response.statusText);
             }
@@ -51,8 +59,7 @@ function PetList() {
     useEffect(() => {
         if(AccToken !== "No Token")
             getAnimalList();
-    }, [AccToken, animalType, breed, size, gender, age, status])
-
+    }, [AccToken, animalType, breed, size, gender, age, status, page])
 
     return (
         <>
@@ -62,6 +69,7 @@ function PetList() {
                     <PetListItem key={index} petInfo={animal} />
                 ))}
             </div>
+            < Pagination />
         </>
     )
 }

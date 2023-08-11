@@ -13,6 +13,10 @@ const initialState = {
     gender: "Any",
     age: "Any",
     adoption_status: "Any",
+    pet: {},
+    modal: false,
+    page: 1,
+    total: 1,
 }
 
 export const useGlobalState = () => {

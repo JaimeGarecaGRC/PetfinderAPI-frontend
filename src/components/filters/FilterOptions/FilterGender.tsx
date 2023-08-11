@@ -21,7 +21,6 @@ function FilterGender() {
             <option value="female">Hembra</option>
             <option value="unknow">Desconocido</option>
         </select>
-
     )
 }
 

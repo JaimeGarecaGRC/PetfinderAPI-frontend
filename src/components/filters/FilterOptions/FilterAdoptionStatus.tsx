@@ -16,7 +16,7 @@ function FilterAdoptionStatus() {
     return(
         <select className="size-select" name="adoptionStatus" value={adoptionStatus} onChange={(e) => changeAdoptionStatus(e.target.value)}>
             <option value="Any">Cualquier estado de adopcion</option>
-            <option value="adoptable">Por Adoptadar</option>
+            <option value="adoptable">Por Adoptar</option>
             <option value="adopted">Adoptado</option>
             <option value="found">Encontrado</option>
         </select>
