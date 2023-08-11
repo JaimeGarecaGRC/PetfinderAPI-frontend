@@ -14,6 +14,9 @@ function PetList() {
         dispatch({type: "CHANGE_TOTAL", payload: totalPages});
     }
 
+    const changeResetPage = () => {
+        dispatch({type: "RESET_PAGE"});
+    }
     const [animals, setAnimals] = useState([]);
 
     const AccToken = state.acc_token;
@@ -60,6 +63,11 @@ function PetList() {
         if(AccToken !== "No Token")
             getAnimalList();
     }, [AccToken, animalType, breed, size, gender, age, status, page])
+
+    useEffect(() => {
+        if(AccToken !== "No Token")
+            changeResetPage();
+    }, [AccToken, animalType, breed, size, gender, age, status])
 
     return (
         <>

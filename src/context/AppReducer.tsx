@@ -1,23 +1,3 @@
-// interface AppState {
-//     acc_token: string,
-//     animal_type: string,
-//     breed: string,
-//     size: string,
-//     gender: string,
-//     age: string,
-//     adoption_status: string,
-//     pet: object,
-//     modal: boolean,
-//     page: number,
-//     total: number, 
-// }
-
-// type AccessToken = { type: 'ADD_ACCESS_TOKEN'; payload: string };
-// type ChangeBreed = { type: 'CHANGE_BREED'; string}
-// type ChangeStatus = { type: 'CHANGE_ADOPTION_STATUS'; string}
-
-// type AppActions = AccessToken | ChangeBreed | ChangeStatus;
-
 export const reducer = (state, action) => {
     switch(action.type){
         case "ADD_ACCESS_TOKEN":
@@ -59,9 +39,13 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 total: action.payload
-            }        
+            }    
+        case "RESET_PAGE":
+        return {
+            ...state,
+            page: 1
+        }     
         case "PREVIOUS_PAGE":
-        
             return {
                 ...state,
                 page: state.page - 1
