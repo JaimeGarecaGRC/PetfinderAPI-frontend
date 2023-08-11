@@ -8,6 +8,9 @@ import Pagination from './pagination';
 
 function PetList() {
 
+
+    const [loading, setLoading] = useState(false);
+
     const {state, dispatch}: any = useContext(Context);
 
     const changeTotalPages = (totalPages) => {
@@ -30,7 +33,7 @@ function PetList() {
 
     const getAnimalList = async () => {
         if (AccToken) {
-
+            setLoading(true);
             const breedIURL = breed !== ( "Any" || "" )? `&breed=${breed}` : "" ;
             const sizeIURL = size !== "Any" ? `&size=${size}` : "" ;
             const genderIURL = gender !== "Any" ? `&gender=${gender}` : "";
@@ -49,12 +52,15 @@ function PetList() {
                 const data = await response.json();
                 setAnimals(data.animals);
                 changeTotalPages(data.pagination.total_pages);
+                setLoading(false);
 
             } else {
                 console.error('API Error:', response.status, response.statusText);
+                setLoading(false);
             }
             } catch (error) {
                 console.error('Error:', error);
+                setLoading(false);
             }
         }
     }
@@ -69,17 +75,25 @@ function PetList() {
             changeResetPage();
     }, [AccToken, animalType, breed, size, gender, age, status])
 
+    
     return (
-        <>
+        <div className='pet-list-big-container'>
             <h1>Conoce a tu futuro Peludito:</h1>
             <div className="pet-list-container">
-                {animals.map((animal, index) => (
-                    <PetListItem key={index} petInfo={animal} />
-                ))}
+                {loading ? 
+                    <img className="pet-list-loading-image" src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca_w200.gif" alt="Esta cargando" />
+                    :
+                    animals.map((animal, index) => (
+                        <PetListItem key={index} petInfo={animal} />
+                    ))
+                }
+
+                
             </div>
             < Pagination />
-        </>
+        </div>
     )
+    
 }
 
 export default PetList;

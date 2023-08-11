@@ -122,6 +122,9 @@ body{
     margin: 20px;
 }
 
+.pet-list-big-container {
+    margin: 0px 50px;
+}
 .pet-list-item {
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -148,8 +151,7 @@ body{
 }
 
 .pet-list-item-box p {
-    margin-top: 10px;
-    font-weight: bold;
+    margin: 10px;
     height: 20%;
 }
 
@@ -161,6 +163,7 @@ body{
     border: 2px solid #ccc;
     background-color: white;
 }
+
 
 /* PAGINATION */
 .pagination {
@@ -245,6 +248,8 @@ body{
     transition: background-color 0.3s, color 0.3s;
 }
 
+
+
 @media (max-width: 870px) {
     
     .pet-list-container {
@@ -282,5 +287,9 @@ body{
 
     .filter-breed-container input[type="text"] {
         width: 69vw;
+    }
+
+    .pet-list-item-box {
+        height: 280px;
     }
 }

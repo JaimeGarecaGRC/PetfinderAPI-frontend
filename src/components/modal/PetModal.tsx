@@ -5,8 +5,6 @@ import { Context } from '../../context/GlobalState';
 
 function PetModal() {
 
-    
-
     const {state, dispatch}: any = useContext(Context);
 
     const pet = state.pet;

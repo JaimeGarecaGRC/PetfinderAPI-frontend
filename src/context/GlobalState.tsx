@@ -27,8 +27,8 @@ export const useGlobalState = () => {
 export const GlobalProvider = ({ children }) => {
 
     const fetchAccessToken = async () => {
-        const userId = "57VDGxk6Do1RTBsA20fy6RHxx36F4CtslY70QdKLZDSWeYH4Cs";
-        const secret = "0z3KhK2S26XQMonkLD6y3dE8SThE6nEcGuYgpjxd";
+        const userId = process.env.NEXT_PUBLIC_PETFINDER_USER_ID;
+        const secret = process.env.NEXT_PUBLIC_PETFINDER_SECRET;
 
         const requestBody = `grant_type=client_credentials&client_id=${userId}&client_secret=${secret}`;
 
@@ -44,7 +44,6 @@ export const GlobalProvider = ({ children }) => {
             if (response.ok) {
                 const data = await response.json();
                 addAccToken(data.access_token);
-                console.log()
                 
             } else {
                 console.error('API Error:', response.status, response.statusText);
