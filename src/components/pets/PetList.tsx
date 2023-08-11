@@ -8,7 +8,7 @@ import Pagination from './pagination';
 
 function PetList() {
 
-    const {state, dispatch} = useContext(Context);
+    const {state, dispatch}: any = useContext(Context);
 
     const changeTotalPages = (totalPages) => {
         dispatch({type: "CHANGE_TOTAL", payload: totalPages});

@@ -5,7 +5,7 @@ import { Context } from '../../../context/GlobalState';
 
 function FilterBreed() {
 
-    const {state, dispatch} = useContext(Context);
+    const {state, dispatch}: any = useContext(Context);
 
     const [searchTerm, setSearchTerm] = useState('');
     

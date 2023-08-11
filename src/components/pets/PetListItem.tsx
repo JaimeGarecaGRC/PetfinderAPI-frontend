@@ -6,7 +6,7 @@ import { Context } from '../../context/GlobalState';
 
 function PetListItem( {petInfo} ) {
 
-    const {state, dispatch} = useContext(Context);
+    const {state, dispatch}: any = useContext(Context);
 
     const modal = state.modal;
 

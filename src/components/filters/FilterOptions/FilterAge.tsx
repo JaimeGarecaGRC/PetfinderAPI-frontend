@@ -5,7 +5,7 @@ import { Context } from '../../../context/GlobalState';
 
 function FilterAge() {
     
-    const {state, dispatch} = useContext(Context);
+    const {state, dispatch}: any = useContext(Context);
 
     const changeAge = (age) => {
         dispatch({type: "CHANGE_AGE", payload: age});

@@ -5,7 +5,7 @@ import { Context } from '../../../context/GlobalState';
 
 function FilterSize() {
 
-    const {state, dispatch} = useContext(Context);
+    const {state, dispatch}: any = useContext(Context);
 
     const changeSize = (size) => {
         dispatch({type: "CHANGE_SIZE", payload: size});

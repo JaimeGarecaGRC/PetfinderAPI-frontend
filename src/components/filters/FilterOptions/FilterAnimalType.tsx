@@ -5,7 +5,7 @@ import { Context } from '../../../context/GlobalState';
 
 function FilterAnimalType() {
 
-    const {state, dispatch} = useContext(Context);
+    const {state, dispatch}: any = useContext(Context);
 
     const changeAnimalType = (animalType) => {
         dispatch({type: "CHANGE_ANIMAL_TYPE", payload: animalType});

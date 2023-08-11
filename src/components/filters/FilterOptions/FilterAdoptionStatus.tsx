@@ -4,8 +4,8 @@ import React, { useContext, useState } from 'react';
 import { Context } from '../../../context/GlobalState';
 
 function FilterAdoptionStatus() {
-    
-    const {state, dispatch} = useContext(Context);
+
+    const {state, dispatch}: any = useContext(Context);
 
     const changeAdoptionStatus = (adoptionStatus) => {
         dispatch({type: "CHANGE_ADOPTION_STATUS", payload: adoptionStatus});

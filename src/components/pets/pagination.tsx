@@ -5,7 +5,7 @@ import { Context } from '../../context/GlobalState';
 
 function Pagination() {
 
-    const {state, dispatch} = useContext(Context);
+    const {state, dispatch}: any = useContext(Context);
 
     const changeNextPage = (gender) => {
         dispatch({type: "NEXT_PAGE"});

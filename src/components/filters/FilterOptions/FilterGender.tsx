@@ -5,7 +5,7 @@ import { Context } from '../../../context/GlobalState';
 
 function FilterGender() {
     
-    const {state, dispatch} = useContext(Context);
+    const {state, dispatch}: any = useContext(Context);
 
     const changeGender = (gender) => {
         dispatch({type: "CHANGE_GENDER", payload: gender});
